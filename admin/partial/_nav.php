@@ -13,10 +13,10 @@
                     <a class="nav-link" href="add_category.php">Add Category</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Add Book</a>
+                    <a class="nav-link" href="add_book.php">Add Book</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Add Event</a>
+                    <a class="nav-link" href="events.php">Add Event</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Specimen Request</a>
