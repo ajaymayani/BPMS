@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+if($_SESSION['a_loggedin']!=true || !isset($_SESSION['a_loggedin']))
+{
+    header("location:login.php");
+}
+
+?>
+
 <!doctype html>
 <html lang="en">
 
