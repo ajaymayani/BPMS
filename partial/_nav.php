@@ -34,8 +34,8 @@
                     Authors
                 </a>
                 <div class="dropdown-menu" aria-labelledby="catDropdown">
-                    <a class="dropdown-item" href="#">Invitation to authors</a>
-                    <a class="dropdown-item" href="#">Submit a proposal</a>
+                    <a class="dropdown-item" href="invitations.php">Invitation to authors</a>
+                    <a class="dropdown-item" href="proposals.php">Submit a proposal</a>
                 </div>
             </li>
             <li class="nav-item">
