@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* START HEADER */
+.header{
+    background-color: #004d80;
+}
+.logo{
+    width: 200px;
+}
+/* END HEADER */
+
+/* FOOTER START */
+.full-footer{
+    background-color: #243c4f;
+}
+.top-footer{
+    color:  white;
+}
+.full-footer a{
+    color: white;
+    font-weight: 600;
+}
+.full-footer a:hover{
+    color: white;
+}
+.bottom-footer{
+    color: white;
+    background-color: #031b2e;
+}
+/* END FOOTER */
+
+
+/* START HOME PAGE  FIRST SECTION */
+.firstSection{
+    background-color: #3498db;
+    color: white;
+}
+.firstSection a{
+    color: white;
+    font-weight: 600;
+}
+/* END HOME PAGE  FIRST SECTION */
+
+
+/* START HOME PAGE SECOND SECTION */
+.qualityImg img{
+    width: 200px;
+}
+/* END HOME PAGE SECOND SECTION */
+
+
+/* START HOME PAGE 3rd SECTION */
+.requirement-section{
+    background-color: #004d80;
+    color : white;
+}
+/* END HOME PAGE 3rd SECTION */
+
+/* START HOME PAGE 5TH SECTION */
+.home-newsletter{
+    background-color: #004d80;
+    color: white;
+}
+
+.home-newsletter .form-control{
+    height: 40px;
+    border-radius: 20px 0 0 20px;
+    border-color: transparent;
+}
+
+.home-newsletter .btn{
+    height: 40px;
+    background-color: rgb(223, 27, 223);
+    border-radius: 0 20px 20px 0;
+    color: white;
+}
+
+/* END HOME PAGE 5TH SECTION */
+
+/* START HOME PAGE 6TH SECTOION - OUR SERVICES  */
+.services-section a{
+    font-weight: bold;
+}
+/* END HOME PAGE 6TH SECTOION - OUR SERVICES  */
