@@ -38,10 +38,10 @@ include 'partial/_config.php';
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Events</a>
+                <a class="nav-link" href="events.php">Events</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Contact Us</a>
+                <a class="nav-link" href="contact-us.php">Contact Us</a>
             </li>
             <?php
             if (isset($_SESSION['loggedin'])) {

@@ -5,7 +5,7 @@ $update = false;
 
 $error = "";
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add'])) {
-  echo "add";
+
   $eventtitle = $_POST['eventtitle'];
   $eventauthor = $_POST['eventauthor'];
   $launchdate = $_POST['launchdate'];
@@ -216,7 +216,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add'])) {
                           <td>' . $rows['launchdate'] . '</td>
                           <td>' . $rows['eventvenue'] . '</td>
                           <td> <img width="50px" src="' . $rows['eventimg'] . '"/></td>
-                          <td> <button data-toggle="modal" data-target="#addModal" class="edits btn btn-primary btn-sm" id="' . $rows['eventid'] . '">Edit</button> <button id="d' . $rows['eventid'] . '" class="deletes btn btn-danger btn-sm">Delete</button> </td>
+                          <td> <button data-toggle="modal" data-target="#addModal" class="edits btn btn-primary btn-sm" id="' . $rows['eventid'] . '">Edit</button> <button id="d' . $rows['eventid'] . '" class="mt-1 deletes btn btn-danger btn-sm">Delete</button> </td>
                           </tr>';
                   }
                 }

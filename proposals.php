@@ -86,7 +86,7 @@ if(isset($_POST['submit']))
 </head>
 
 <body>
-    <?php include 'partial/_nav.php'; ?>
+    <?php session_start(); include 'partial/_nav.php'; ?>
 
     <div class="main">
         <div class="container">

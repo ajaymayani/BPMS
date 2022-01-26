@@ -1,3 +1,4 @@
+<?php include 'partial/_config.php'; ?>
 <!doctype html>
 <html lang="en">
 
@@ -15,21 +16,27 @@
         }
 
         .main {
-            background-image: url(/clg/assignment/bpms/images/invtauthors.jpg);
+            padding-top: 20px;
+            background-image: url(/clg/assignment/bpms/images/women_emp.jpg);
         }
 
         .card {
             background-color: #f7f7f7;
             padding: 30px;
-            width: 70%;
+            width: 80%;
             margin: auto;
-            border-radius: 10px;
         }
 
+        .box {
+            background-color: #ffffff;
+            margin: 10px;
+            padding: 20px;
+        }
 
         .mbr-text {
             font-style: normal;
             line-height: 1.6;
+            font-style: bold;
         }
 
         .white {
@@ -37,46 +44,53 @@
             text-align: left;
         }
 
-        .black {
-            color: black;
-            text-align: center;
-        }
-
         #footer {
             background-color: #2e2e2e;
         }
+
+        .content-div {
+
+            display: flex;
+            justify-content: center;
+
+        }
     </style>
-    <title>Invitation</title>
+    <title>Events</title>
 </head>
 
 <body>
-    <?php session_start(); include 'partial/_nav.php'; ?>
+    <?php session_start();
+    include 'partial/_nav.php'; ?>
 
     <div class="main">
+
         <div class="container">
             <div class="row">
-                <div class="col-12 my-4">
-                    <h1 class="white text-center">Invitation to Authors</h1>
-                </div>
+                <h1 class="white mx-auto">Events</h1>
             </div>
-            <div class="row">
-                <div class="-12">
-                    <div class="card mb-5">
-                        <p class="black mrb-text">If you have a publishing proposal in your area of specialisation, we will be happy to hear from you. The publication proposal form can be accessed from our website www.universitiespress.com. Alternatively, you may please write to:</p>
-                        <p class="black">
-                            The Editorial Department<br>
-                            Universities Press (India) Private Limited<br>
-                            3-6-747/1/A and 3-6-754/1 Himayatnagar<br>
-                            Hyderabad 500 029,Telangana, India<br>
-                            Phone: (040) 27662849, 27662850<br>
-                            Email: <a href="">info@msupress.com</a>
-                        </p>
-                    </div>
-                </div>
+            <div class="row content-div">
+                <?php
+                $sql = "SELECT * FROM `events_tbl`";
+                $result = $conn->query($sql);
+                if ($result) {
+                    while ($rows = $result->fetch_assoc()) {
+                        echo '<div class="col-3 box align-center">
+                        <div class="img align-center">
+                            <a href="display_events.php?id='.$rows['eventid'].'"><img src="admin/' . $rows['eventimg'] . '" width="100px" alt="eventimage"></a>
+                        </div>
+                        <div class="title align-center mt-1">
+                            <h6>' . $rows['eventtitle'] . '</h6>
+                        </div>
+                    </div>';
+                    }
+                } else {
+                    echo $conn->error;
+                }
+                ?>
             </div>
         </div>
-    </div>
 
+    </div>
     <?php include 'partial/_footer.php'; ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
