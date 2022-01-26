@@ -40,7 +40,7 @@
 </head>
 
 <body>
-    <?php include 'partial/_nav.php'; ?>
+    <?php session_start();include 'partial/_nav.php'; ?>
 
     <div class="align-center" style="background-color: blueviolet;">
         <div id="carouselExampleIndicators" class="carousel slide py-5" ata-ride="carousel">

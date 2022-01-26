@@ -50,6 +50,8 @@ if(isset($_POST['submit']))
 
         .main {
             background-image: url(/clg/assignment/bpms/images/invtauthors.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         .card {
