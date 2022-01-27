@@ -56,6 +56,21 @@ $inserted = false;
                             <input type="text" class="form-control" id="bookname" name="bookname" value="">
                         </div>
                         <div class="form-group">
+                            <label for="bookname">Book category</label>
+                            <select name="bookcategory" id="bookcategory" class="form-control">
+                            <option selected disabled>Select category</option>
+                            <?php
+                            $sql = "select * from books_category_tbl";
+                            $result = $conn->query($sql);
+                            if ($result) {
+                                while ($rows = $result->fetch_assoc()) {
+                                    echo '<option value="' . $rows['id'] . '">' . $rows['cat_name'] . '</option>';
+                                }
+                            }
+                            ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="authorname">Author Name</label>
                             <select name="authorname" id="authorname" class="form-control">
                                 <option selected disabled>Select author</option>
@@ -223,6 +238,7 @@ $inserted = false;
                             <thead>
                                 <th>Sno</th>
                                 <th>Book Name</th>
+                                <th>Category</th>
                                 <th>Author Name</th>
                                 <th>ISBN</th>
                                 <th>Publisher Year</th>
@@ -241,6 +257,7 @@ $inserted = false;
                                         echo '<tr>
                                                 <td>' . ++$sno . '</td>
                                                 <td>' . $rows['bookname'] . '</td>
+                                                <td>' . $rows['book_cate_id'] . '</td>
                                                 <td>' . $rows['author_name'] . '</td>
                                                 <td>' . $rows['ISBN'] . '</td>
                                                 <td>' . $rows['pyear'] . '</td>

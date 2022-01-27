@@ -22,7 +22,7 @@ include 'partial/_config.php';
                     $result = $conn->query($sql);
                     if ($result) {
                         while ($rows = $result->fetch_assoc()) {
-                            echo '<a class="dropdown-item" href="#">' . $rows['cat_name'] . '</a>';
+                            echo '<a class="dropdown-item" href="books.php?id='.$rows['id'].'">' . $rows['cat_name'] . '</a>';
                         }
                     }
                     ?>

@@ -4,6 +4,7 @@ include '../partial/_config.php';
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $bookname  = $_POST['bookname'];
+    $bookcategory  = $_POST['bookcategory'];
     $authorname = $_POST['authorname'];
     $ISBN = $_POST['ISBN'];
     $pyear = $_POST['pyear'];
@@ -53,14 +54,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         }
     }
 
-    $sql ="INSERT INTO `booksinfo_tbl`(`bookname`, `authorid`, `ISBN`, `pyear`, `booktype`, `bookpage`, `language`, `booksize`, `bookrights`, `bookprice`, `aboutbook`, `bookurl`) VALUES ('$bookname','$authorname','$ISBN','$pyear','$booktype','$bookpage','$language','$booksize','$bookrights','$bookprice','$aboutbook','$target_file')";
+    $sql ="INSERT INTO `booksinfo_tbl`(`bookname`,`book_cate_id`, `authorid`, `ISBN`, `pyear`, `booktype`, `bookpage`, `language`, `booksize`, `bookrights`, `bookprice`, `aboutbook`, `bookurl`) VALUES ('$bookname','$bookcategory','$authorname','$ISBN','$pyear','$booktype','$bookpage','$language','$booksize','$bookrights','$bookprice','$aboutbook','$target_file')";
     $result = $conn->query($sql);
     if($result)
     {
         echo "success";
         header("location:add_book.php");
     }else{
-        echo "failed ".$coon->error;
+        echo "failed ".$conn->error;
     }
 }
 ?>
