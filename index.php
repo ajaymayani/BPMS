@@ -6,18 +6,29 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <?php include 'partial/_link.php';?>
 
     <style>
         .align-center {
             text-align: center;
         }
 
-        .welcome-div {
-            padding-top: 105px;
-            background-image: url(/clg/assignment/bpms/images/women_emp.jpg);
+        .welcome-div::before{
+            content: '';
+            background-color: black;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+            z-index: -1;
+        }
 
+        .welcome-div {
+            position: relative;
+            top: 0;
+            left: 0;
+            background: url('images/bg-03.jpg') no-repeat center center/cover;
+            z-index: 1;
         }
 
         .card {
@@ -32,17 +43,36 @@
             text-align: left;
         }
 
-        #footer {
-            background-color: #2e2e2e;
+        
+        h5 {
+            color: #607d8b;
+            font-weight: 600;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: inline-block;
+            letter-spacing: 1px;
         }
+
+        h6{
+            font-weight: 400;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        p, .card ul li{
+            letter-spacing: 1px;
+            font-weight: 300;
+        }   
     </style>
-    <title>Home Page</title>
+    <title>Home</title>
 </head>
 
 <body>
-    <?php session_start();include 'partial/_nav.php'; ?>
+    <?php session_start();
+    include 'partial/_nav.php'; ?>
 
-    <div class="align-center" style="background-color: blueviolet;">
+    <div class="align-center" style="background-color: #0080ff;">
         <div id="carouselExampleIndicators" class="carousel slide py-5" ata-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -96,10 +126,10 @@
     </div>
     <div class="welcome-div">
         <div class="container">
-            <div class="row pb-5">
+            <div class="row pb-5 pt-5">
                 <div class="col-12 align-center mb-3">
-                    <h5 style="color: white;">Welcome to MSU Library</h5>
-                    <h6 style="color:white">MSU focuses on the publication of books in Science,Technology, Medicine and Management.</h6>
+                    <h5 class="white text-center">Welcome to MSU Library</h5>
+                    <h6 class="white text-center">MSU focuses on the publication of books in Science,Technology, Medicine and Management.</h6>
                 </div>
                 <div class="col-md-6">
                     <div class="card">
@@ -138,12 +168,9 @@
         </div>
     </div>
 
-    <?php include 'partial/_footer.php'; ?>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
+    <?php include 'partial/_footer.php'; 
+        include 'partial/_script.php';
+    ?>
+  </body>
 
 </html>

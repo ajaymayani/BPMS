@@ -45,18 +45,23 @@ if ($result->num_rows == 1) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="bootstrap/css/fontawesome.css">
+    <?php include 'partial/_link.php'; ?>
+
     <style>
-        .align-center {
-            text-align: center;
+        #main::before {
+            content: '';
+            position: absolute;
+            background-color: black;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
         }
 
-        .main {
-            background-image: url(/clg/assignment/bpms/images/invtauthors.jpg);
-            background-repeat: no-repeat;
-            background-size: cover;
+        #main {
+            position: relative;
+            background: url('images/invtauthors.jpg') no-repeat center center/cover;
+            z-index: 1;
         }
 
         .card {
@@ -72,19 +77,43 @@ if ($result->num_rows == 1) {
             padding: 20px;
         }
 
-        .mbr-text {
-            font-style: normal;
-            line-height: 1.6;
-            font-style: bold;
+        .input-box {
+            margin-bottom: 20px;
         }
 
-        .white {
-            color: white;
-            text-align: left;
+        .input-box span {
+            font-size: 16px;
+            margin-bottom: 5px;
+            display: inline-block;
+            color: #607d8b;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
 
-        #footer {
-            background-color: #2e2e2e;
+        .input-box input {
+            width: 100%;
+            padding: 10px 20px;
+            outline: none;
+            font-weight: 400;
+            border: 1px solid #607d8b;
+            font-size: 16px;
+            letter-spacing: 1px;
+            color: #607d8b;
+            background: transparent;
+            border-radius: 30px;
+        }
+
+        .input-box input[type="submit"] {
+            background: #0073e6;
+            color: #fff;
+            outline: none;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .input-box input[type="submit"]:hover {
+            background: #0480fd;
         }
     </style>
     <title>Profile</title>
@@ -93,7 +122,7 @@ if ($result->num_rows == 1) {
 <body>
     <?php include 'partial/_nav.php'; ?>
 
-    <div class="main">
+    <div id="main">
         <div class="container py-5">
             <div class="row">
                 <div class="col-md-6 mx-auto">
@@ -113,22 +142,24 @@ if ($result->num_rows == 1) {
                         </div>
                         <div class="box">
                             <form action="profile.php" method="post">
-                                <div class="form-group">
-                                    <label for="name">Name</label>
+
+                                <div class="input-box">
+                                    <span>Name</span>
                                     <input type="hidden" name="userid" id="userid" value="<?php echo $_SESSION['userid']; ?>">
                                     <input type="text" class="form-control" placeholder="Name" name="name" id="name" value="<?php echo $name ?>">
                                 </div>
-                                <div class="form-group">
-                                    <label for="email">Email</label>
+                                <div class="input-box">
+                                    <span>Email</span>
                                     <input type="email" class="form-control" placeholder="Email" name="emailid" id="emailid" value="<?php echo $emailid ?>">
                                 </div>
-                                <div class="form-group">
-                                    <label for="password">Password</label>
+                                <div class="input-box">
+                                    <span>Mobile Number</span>
                                     <input type="text" class="form-control" placeholder="Mobile Number" name="mobilenumber" id="mobilenumber" value="<?php echo $mobilenumber ?>">
                                 </div>
-                                <div class="form-group align-center">
+                                <div class="input-box">
                                     <input type="submit" class="btn btn-primary btn-block" name="submit" id="submit" value="Update">
                                 </div>
+
                             </form>
                         </div>
                     </div>
@@ -137,12 +168,9 @@ if ($result->num_rows == 1) {
         </div>
     </div>
 
-    <?php include 'partial/_footer.php'; ?>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <?php include 'partial/_footer.php';
+    include 'partial/_script.php';
+    ?>
 </body>
 
 </html>

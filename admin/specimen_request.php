@@ -2,15 +2,15 @@
 $update = false;
 
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['update'])) {
-    $proposalid = $_POST['proposalid'];
+    $request_id = $_POST['request_id'];
     $status = $_POST['status'];
 
-    $sql = "UPDATE author_proposal_tbl SET status = '$status' WHERE proposalid = '$proposalid'";
+    $sql = "UPDATE specimen_req_tbl SET status = '$status' WHERE request_id = '$request_id'";
     $result = $conn->query($sql);
     if ($result) {
-        $update =true;
+        $update = true;
     } else {
-        $update =false;
+        $update = false;
         echo "Error: " . $conn->error;
     }
 }
@@ -20,22 +20,21 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['update'])) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Add Book</title>
+    <title>Specimen Request</title>
     <?php include 'partial/_link.php'; ?>
-    
+
 </head>
 
 <body>
     <?php include 'partial/_nav.php';
-        if($update)
-        {
-            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+    if ($update) {
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>Success!</strong> Status has been updated.
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>';
-        }
+    }
     ?>
 
 
@@ -50,14 +49,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['update'])) {
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="author_proposal.php" method="POST">
-                        <input type="hidden" name="proposalid" id="proposalid">
+                    <form action="specimen_request.php" method="POST">
+                        <input type="hidden" name="request_id" id="request_id">
                         <div class="form-group row">
                             <div class="col-4">
-                                <label for="">Author Name</label>
+                                <label for="">Name</label>
                             </div>
                             <div class="col-6">
-                                <input type="text" readonly name="authorname" id="authorname" class="form-control">
+                                <input type="text" readonly name="input_name" id="input_name" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -98,34 +97,35 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['update'])) {
                 <table id="myTable">
                     <thead>
                         <th>Sno</th>
-                        <th>Author Name</th>
-                        <th>Designation</th>
-                        <th>Institute Name</th>
-                        <th>Book Title</th>
-                        <th>Book Nature</th>
+                        <th>Name</th>
+                        <th>Book Category</th>
+                        <th>Book Name</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
                         <th>Status</th>
                         <th>Action</th>
                     </thead>
                     <tbody>
                         <?php
-                        $sql = "SELECT * FROM author_proposal_tbl";
+                        $sql = "SELECT * FROM specimen_req_tbl s,books_category_tbl b where s.book_category_id = b.id";
+
                         $result = $conn->query($sql);
                         if ($result) {
                             $sno = 0;
                             while ($rows = $result->fetch_assoc()) {
                                 echo '<tr>
                                   <td>' . ++$sno . '</td>
-                                  <td>' . $rows['authorname'] . '</td>
-                                  <td>' . $rows['designation'] . '</td>
-                                  <td>' . $rows['insname'] . '</td>
-                                  <td>' . $rows['booktitle'] . '</td>
-                                  <td>' . $rows['booknature'] . '</td>';
+                                  <td>' . $rows['name'] . '</td>
+                                  <td>' . $rows['cat_name'] . '</td>
+                                  <td>' . $rows['book_name'] . '</td>
+                                  <td>' . $rows['telephone'] . '</td>
+                                  <td>' . $rows['email'] . '</td>';
                                 if ($rows['status'] == 0) {
                                     echo '<td> <span class="badge badge-warning">Pendding</span> </td>';
                                 } else {
                                     echo '<td> <span class="badge badge-success">Active</span> </td>';
                                 }
-                                echo '<td> <button id="' . $rows['proposalid'] . '" class="edits btn btn-sm btn-success">Edit</button> <button id="d' . $rows['proposalid'] . '" class="deletes btn btn-sm btn-danger">Delete</button> </td>
+                                echo '<td> <button id="' . $rows['request_id'] . '" class="edits btn btn-sm btn-success">Edit</button> <button id="d' . $rows['request_id'] . '" class="deletes btn btn-sm btn-danger">Delete</button> </td>
                                   </tr>';
                             }
                         }
@@ -150,8 +150,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['update'])) {
                 id = e.target.id;
                 authorname1 = tr.getElementsByTagName('td')[1].innerText;
                 status = tr.getElementsByTagName('td')[6].innerText;
-                proposalid.value = id;
-                authorname.value = authorname1;
+                request_id.value = id;
+                input_name.value = authorname1;
                 $('#editModal').modal('toggle');
             })
         })
@@ -159,9 +159,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['update'])) {
         deletes = document.getElementsByClassName('deletes');
         Array.from(deletes).forEach((element) => {
             element.addEventListener('click', (e) => {
-                proposalid = e.target.id.substr(1,);
-                if (confirm("Are you sure you want to delete this book ?")) {
-                    window.location = `author_proposal_delete.php?proposalid=${proposalid}`;
+                request_id = e.target.id.substr(1, );
+                if (confirm("Are you sure you want to delete this request ?")) {
+                    window.location = `specimen_request_delete.php?request_id=${request_id}`;
                 }
             })
         });

@@ -10,8 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['submit'])) {
     $message = $_POST['message'];
 
     $sql = "insert into contact_tbl (name,email,message) values ('$name','$email','$message')";
-    $result =$conn->query($sql);
-    if($result){
+    $result = $conn->query($sql);
+    if ($result) {
         $submited = "Message sent successfully....";
     }
 }
@@ -25,18 +25,23 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['submit'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <?php include 'partial/_link.php'; ?>
 
     <style>
-        .align-center {
-            text-align: center;
+        #main::before {
+            content: '';
+            background-color: black;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
         }
 
-        .main {
-            background-image: url(/clg/assignment/bpms/images/invtauthors.jpg);
-            background-repeat: no-repeat;
-            background-size: cover;
+        #main {
+            position: relative;
+            background: url('images/invtauthors.jpg') no-repeat center center/cover;
+            z-index: -1;
         }
 
         .card {
@@ -58,28 +63,36 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['submit'])) {
             font-style: bold;
         }
 
-        .white {
-            color: white;
-            text-align: left;
+        h1 {
+            font-weight: 500;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            display: block;
+            letter-spacing: 1px;
         }
 
-        #footer {
-            background-color: #2e2e2e;
+        p {
+            font-size: 16px;
+            display: inline-block;
+            font-weight: 400;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
         }
     </style>
     <title>Contact Us</title>
 </head>
 
 <body>
-    <?php include 'partial/_nav.php';
+    <?php session_start();
+    include 'partial/_nav.php';
 
     ?>
 
-    <div class="main">
+    <div id="main">
         <div class="container">
             <div class="row">
                 <div class="col-12 my-4">
-                    <h4 class="white text-center">Contact Us</h4>
+                    <h4 class="text-light text-center">Contact Us</h4>
                 </div>
             </div>
             <div class="row">
@@ -87,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['submit'])) {
                     <div class="card mb-5">
                         <?php if ($submited) {
                             echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Success ! </strong>'.$submited.'
+            <strong>Success ! </strong>' . $submited . '
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -115,12 +128,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['submit'])) {
         </div>
     </div>
 
-    <?php include 'partial/_footer.php'; ?>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <?php include 'partial/_footer.php';
+    include 'partial/_script.php';
+    ?>
+
 </body>
 
 </html>

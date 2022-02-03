@@ -38,57 +38,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['submit'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <?php include 'partial/_link.php';?>
 
-    <style>
-        .align-center {
-            text-align: center;
-        }
-
-        .main {
-            background-image: url(/clg/assignment/bpms/images/invtauthors.jpg);
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-        .card {
-            background-color: #f7f7f7;
-            padding: 30px;
-            width: 80%;
-            margin: auto;
-        }
-
-        .box {
-            background-color: #ffffff;
-            margin: 10px;
-            padding: 20px;
-        }
-
-        .mbr-text {
-            font-style: normal;
-            line-height: 1.6;
-            font-style: bold;
-        }
-
-        .white {
-            color: white;
-            text-align: left;
-        }
-
-        #footer {
-            background-color: #2e2e2e;
-        }
-    </style>
     <title>Register</title>
 </head>
 
 <body>
-    <?php include 'partial/_nav.php';
+    <?php include 'partial/_nav.php';?>
 
-    ?>
-
-    <div class="main">
+    <!-- <div class="main">
         <div class="container">
             <div class="row">
                 <div class="col-12 my-4">
@@ -129,14 +87,51 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['submit'])) {
                 </div>
             </div>
         </div>
-    </div>
-
-    <?php include 'partial/_footer.php'; ?>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
+    </div> -->
+    <section>
+        <div class="img-box">
+            <img src="images/bg-01.jpg" alt="">
+        </div>
+        <div class="content-box">
+            <div class="form-box">
+                <h2>Register</h2>
+                <?php if ($exists) {
+                            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Error !</strong>Email id already exists.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>';
+                        } ?>
+                <form action="register.php" method="post">
+                    <div class="input-box">
+                        <span>Name</span>
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <div class="input-box">
+                        <span>Mobile No.</span>
+                        <input type="text" name="phonenumber" id="phonenumber">
+                    </div>
+                    <div class="input-box">
+                        <span>Email</span>
+                        <input type="email" name="email" id="email">
+                    </div>
+                    <div class="input-box">
+                        <span>Password</span>
+                        <input type="password" name="password" id="password">
+                    </div>
+                    <div class="input-box">
+                        <input type="submit" id="submit" name="submit" value="Sign Up">
+                    </div>
+                    <div class="input-box">
+                        <p>Alread have an account? <a href="login.php">Sign in</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <?php include 'partial/_script.php';?>
+ </body>
 
 </html>

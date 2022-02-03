@@ -8,16 +8,8 @@ $inserted = false;
 <head>
     <meta charset="UTF-8">
     <title>Add Book</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="//cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+    <?php include 'partial/_link.php'; ?>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-
-    <style>
-        body {
-            background-color: #9f9da7;
-        }
-    </style>
 </head>
 
 <body>
@@ -31,19 +23,15 @@ $inserted = false;
 </div>';
     }
     ?>
-
-    <!-- Button trigger modal -->
-
-
     <!-- Add Modal -->
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Add Book</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h2 class="modal-title" id="exampleModalLongTitle">Add Book</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                 </div>
                 <div class="modal-body">
                     <form action="book_upload.php" method="POST" enctype="multipart/form-data">
@@ -58,16 +46,16 @@ $inserted = false;
                         <div class="form-group">
                             <label for="bookname">Book category</label>
                             <select name="bookcategory" id="bookcategory" class="form-control">
-                            <option selected disabled>Select category</option>
-                            <?php
-                            $sql = "select * from books_category_tbl";
-                            $result = $conn->query($sql);
-                            if ($result) {
-                                while ($rows = $result->fetch_assoc()) {
-                                    echo '<option value="' . $rows['id'] . '">' . $rows['cat_name'] . '</option>';
+                                <option selected disabled>Select category</option>
+                                <?php
+                                $sql = "select * from books_category_tbl";
+                                $result = $conn->query($sql);
+                                if ($result) {
+                                    while ($rows = $result->fetch_assoc()) {
+                                        echo '<option value="' . $rows['id'] . '">' . $rows['cat_name'] . '</option>';
+                                    }
                                 }
-                            }
-                            ?>
+                                ?>
                             </select>
                         </div>
                         <div class="form-group">
@@ -146,10 +134,10 @@ $inserted = false;
     <div class="container-fluid mt-3">
         <div class="card">
             <div class="card-header">
-                <h4>Book Lists</h4>
-
+                <h2>Book Lists</h2>
+                <br>
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addModal">
-                    <i class="fa fa-plus"></i> News
+                    <i class="fa fa-plus"></i> New
                 </button>
             </div>
             <div class="card-body">
@@ -264,7 +252,7 @@ $inserted = false;
                                                 <td>' . $rows['bookpage'] . '</td>
                                                 <td>' . $rows['bookprice'] . '</td>
                                                 <td> <img class="img-fluid" width="50px" src="' . $rows['bookurl'] . '" /></td>
-                                                <td><a href="edit_book.php?id=' . $rows['id'] . '" class="btn btn-info btn-sm">Edit</a> <a class="btn btn-danger btn-sm deletes" href="#" id="' . $rows['id'] . '">Delete</a></td>
+                                                <td><a href="edit_book.php?id=' . $rows['id'] . '" class="btn btn-success btn-sm">Edit</a> <a class="btn btn-danger btn-sm deletes mt-1" href="#" id="' . $rows['id'] . '">Delete</a></td>
                                              </tr>';
                                     }
                                 }
@@ -279,12 +267,7 @@ $inserted = false;
 
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="//cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <?php include 'partial/_script.php'; ?>
     <script>
         $(document).ready(function() {
             $('#myTable').DataTable();

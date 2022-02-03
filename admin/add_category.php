@@ -2,7 +2,7 @@
 $cat_name = "";
 $inserted = false;
 if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['id'])) {
-    
+
     $id = $_GET['id'];
     $sql = "select * from books_category_tbl where id = " . $id;
     $result = $conn->query($sql);
@@ -14,17 +14,15 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['id'])) {
     }
 }
 
-if( $_SERVER['REQUEST_METHOD']=="GET" && isset($_GET['edit_category']) && isset($_GET['update']))
-{
+if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['edit_category']) && isset($_GET['update'])) {
     $id = $_GET['edit_id'];
     $edit_category = $_GET['edit_category'];
     $sql = "update books_category_tbl set cat_name = '$edit_category' where id ='$id'";
     $result = $conn->query($sql);
-    if($result)
-    {
+    if ($result) {
         header("location:add_category.php");
-    }else{
-        echo "Error :".$conn->error;
+    } else {
+        echo "Error :" . $conn->error;
     }
 }
 
@@ -47,13 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add'])) {
     <meta charset="UTF-8">
     <title>Category</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="//cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
-    <style>
-        body {
-            background-color: #9f9da7;
-        }
-    </style>
+    <?php include 'partial/_link.php'; ?>
 </head>
 
 <body>
@@ -64,18 +56,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add'])) {
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
-</div>';}
+</div>';
+    }
 
     ?>
 
-    <div class="container mt-3">
-        <div class="card">
-            <div class="card-header">Add Category</div>
-            <div class="card-body">
-                <div class="row">
+    <div class="main container mt-3">
 
-                    <div class="col-12 col-md-6">
+        <div class="row">
 
+            <div class="col-12 col-md-5">
+                <div class="card">
+                    <div class="card-header"><h2>Add Category</h2></div>
+                    <div class="card-body">
                         <?php
                         if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['id'])) { ?>
                             <form action="add_category.php" method="GET">
@@ -89,22 +82,26 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add'])) {
                                 </div>
                             </form>
                         <?php
-                        }
-                        else{
+                        } else {
 
                         ?>
-                        <form action="add_category.php" method="POST">
-                            <div class="form-group">
-                                <label for="category">Book Category</label>
-                                <input type="text" name="category" id="category" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" name="add" id="add" value="Add" class="btn btn-primary btn-sm">
-                            </div>
-                        </form>
-                        <?php }?>
+                            <form action="add_category.php" method="POST">
+                                <div class="form-group">
+                                    <label for="category">Book Category</label>
+                                    <input type="text" name="category" id="category" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" name="add" id="add" value="Add" class="btn btn-primary btn-sm">
+                                </div>
+                            </form>
+                        <?php } ?>
                     </div>
-                    <div class="col-12 col-md-6">
+                </div>
+            </div>
+
+            <div class="col-12 col-md-7">
+                <div class="card">
+                    <div class="card-body">
                         <table id="myTable" class="table">
                             <thead>
                                 <th>Sno</th>
@@ -121,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add'])) {
                                         echo '<tr>
                                                 <td>' . ++$sno . '</td>
                                                 <td>' . $rows['cat_name'] . '</td>
-                                                <td><a href="add_category.php?id=' . $rows['id'] . '" class="btn btn-info btn-sm">Edit</a> <a class="btn btn-danger btn-sm deletes" href="#" id="' . $rows['id'] . '">Delete</a></td>
+                                                <td><a href="add_category.php?id=' . $rows['id'] . '" class="btn btn-success btn-sm">Edit</a> <a class="btn btn-danger btn-sm deletes" href="#" id="' . $rows['id'] . '">Delete</a></td>
                                              </tr>';
                                     }
                                 }
@@ -134,12 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add'])) {
         </div>
     </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="//cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <?php include 'partial/_script.php'; ?>
     <script>
         $(document).ready(function() {
             $('#myTable').DataTable();

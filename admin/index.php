@@ -1,8 +1,7 @@
 <?php
 
 session_start();
-if($_SESSION['a_loggedin']!=true || !isset($_SESSION['a_loggedin']))
-{
+if ($_SESSION['a_loggedin'] != true || !isset($_SESSION['a_loggedin'])) {
     header("location:login.php");
 }
 
@@ -16,14 +15,10 @@ if($_SESSION['a_loggedin']!=true || !isset($_SESSION['a_loggedin']))
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <?php include 'partial/_link.php'; ?>
+    <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <style>
-        body {
-            background-color: #9f9da7;
-        }
-
         .border-left-primary {
             border-left: 0.25rem solid #4e73df !important;
         }
@@ -39,6 +34,22 @@ if($_SESSION['a_loggedin']!=true || !isset($_SESSION['a_loggedin']))
         .border-left-warning {
             border-left: 0.25rem solid #f6c23e !important;
         }
+
+        .container {
+            height: 100vh;
+        }
+
+        .content-box {
+            box-shadow: 2px 2px 10px;
+        }
+
+        h5 {
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
     </style>
 
     <title>Home</title>
@@ -48,9 +59,9 @@ if($_SESSION['a_loggedin']!=true || !isset($_SESSION['a_loggedin']))
     <?php include 'partial/_nav.php'; ?>
 
     <div class="container">
-        <div class=" card mt-3">
+        <div class="card mt-3 content-box">
             <div class="card-header">
-                <strong> Dashboard</strong>
+                <h2>Dashboard</h2>
             </div>
             <div class="card-body">
                 <!-- Content Row -->
@@ -63,13 +74,16 @@ if($_SESSION['a_loggedin']!=true || !isset($_SESSION['a_loggedin']))
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            Books</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                                            <h5>Books</h5>
+                                        </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">50</div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fa fa-users fa-2x mr-1"></i>
                                     </div>
-                                    <a href="show_all_students.php?course=1" class="small-box-footer mt-2">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                    <div class="col-auto">
+                                        <a href="add_book.php" class="small-box-footer mt-2">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -82,7 +96,7 @@ if($_SESSION['a_loggedin']!=true || !isset($_SESSION['a_loggedin']))
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            Events</div>
+                                            <h5>Events</h5></div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                                     </div>
                                     <div class="col-auto">
@@ -103,7 +117,7 @@ if($_SESSION['a_loggedin']!=true || !isset($_SESSION['a_loggedin']))
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                            Specimen Request</div>
+                                            <h5>Specimen Request</h5></div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                                     </div>
                                     <div class="col-auto">
@@ -124,7 +138,7 @@ if($_SESSION['a_loggedin']!=true || !isset($_SESSION['a_loggedin']))
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                            Author Proposal</div>
+                                            <h5>Author Proposal</h5></div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                                     </div>
                                     <div class="col-auto">
@@ -142,11 +156,7 @@ if($_SESSION['a_loggedin']!=true || !isset($_SESSION['a_loggedin']))
         </div>
     </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <?php include 'partial/_script.php'; ?>
 </body>
 
 </html>

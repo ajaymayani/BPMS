@@ -29,52 +29,46 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <?php include 'partial/_link.php';?>
 
     <style>
         .align-center {
             text-align: center;
         }
-
+        .main::before {
+            content: '';
+            background-color: black;
+            position: absolute;
+            width :100%;
+            height : 100%;
+            z-index: -1;
+            opacity: 0.3;
+        }
         .main {
-            padding-top: 20px;
-            background-image: url(/clg/assignment/bpms/images/women_emp.jpg);
+            background: url('images/bg-03.jpg') no-repeat center center/cover;
+            position: relative;
+            z-index: 1;
         }
-
-        .card {
-            background-color: #f7f7f7;
-            padding: 30px;
-            width: 80%;
-            margin: auto;
-        }
-
-        .box {
-            background-color: #ffffff;
-            margin: 10px;
-            padding: 20px;
-        }
-
-        .mbr-text {
-            font-style: normal;
-            line-height: 1.6;
-            font-style: bold;
-        }
-
         .white {
             color: white;
             text-align: left;
         }
-
-        #footer {
-            background-color: #2e2e2e;
+        h6 {
+            color: #607d8b;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
         }
 
-        .content-div {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        h5 {
+            color: #607d8b;
+            font-weight: 400;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
         }
+
     </style>
     <title>Events</title>
 </head>
@@ -85,7 +79,7 @@
 
     <div class="main">
 
-        <div class="container">
+        <div class="container py-5">
             <div class="row">
                 <div class="col">
                     <h4 class="white text-center"><?php echo $eventtitle; ?></h4>
@@ -118,12 +112,10 @@
         </div>
 
     </div>
-    <?php include 'partial/_footer.php'; ?>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <?php include 'partial/_footer.php'; 
+        include 'partial/_script.php';
+    ?>
+    
 </body>
 
 </html>

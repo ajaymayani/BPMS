@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <?php include 'partial/_link.php';?>
 
     <style>
         .align-center {
@@ -28,10 +28,6 @@
             padding: 20px;
         }
 
-        #footer {
-            background-color: #2e2e2e;
-        }
-
         .content-div {
             display: flex;
             flex-direction: column;
@@ -41,6 +37,28 @@
         .white {
             color: white;
             text-align: left;
+        }
+
+        h2 {
+            color: #607d8b;
+            font-weight: 600;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #0073e6;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
+
+        h5{
+            font-weight: 400;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        p{
+            letter-spacing: 1px;
+            font-weight: 300;
         }
     </style>
     <title>Books Details</title>
@@ -59,7 +77,7 @@
             if ($result) {
                 while ($row = $result->fetch_assoc()) {
                     echo '<div class="col-md-4">
-                    <img src="admin/' . $row['bookurl'] . '" width="350px" alt="book image">
+                    <img class="rounded mx-auto d-block" src="admin/' . $row['bookurl'] . '" width="350px" alt="book image">
                 </div>
                 <div class="col-md-8">
                     <h2>' . $row['bookname'] . '</h2>
@@ -78,12 +96,10 @@
 
         </div>
     </div>
-    <?php include 'partial/_footer.php'; ?>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <?php include 'partial/_footer.php'; 
+        include 'partial/_script.php';
+    ?>
+    
 </body>
 
 </html>

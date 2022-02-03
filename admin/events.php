@@ -56,8 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add'])) {
     $upload = false;
     $error = $conn->error;
   }
-}else if($_SERVER['REQUEST_METHOD']=="POST" && isset($_POST['update']))
-{
+} else if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['update'])) {
   $eventid = $_POST['eventid'];
   $eventtitle = $_POST['edit_eventtitle'];
   $eventauthor = $_POST['edit_eventauthor'];
@@ -67,12 +66,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add'])) {
   $sql = "UPDATE `events_tbl` SET `eventtitle`='$eventtitle',`eventauthor`='$eventauthor',`launchdate`='$launchdate',`eventvenue`='$eventvenue' WHERE `eventid`='$eventid'";
 
   $result = $conn->query($sql);
-  if($result)
-  {
-    $update =true;
-  }else{
+  if ($result) {
+    $update = true;
+  } else {
     $update = false;
-    echo "Error ".$conn->error;
+    echo "Error " . $conn->error;
   }
 }
 ?>
@@ -84,13 +82,24 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add'])) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="//cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
-
+  <?php include 'partial/_link.php'; ?>
   <style>
+    body::before {
+      content: '';
+      position: absolute;
+      background-color: black;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.5;
+    }
+
     body {
-      background-color: #9f9da7;
+      background: url('images/login-bg01.jpg') no-repeat center center/cover;
+      position: relative;
+      z-index: 1;
+      top: 0;
+      left: 0;
     }
   </style>
   <title>Events</title>
@@ -121,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add'])) {
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Edit Event</h5>
+          <h2 class="modal-title" id="exampleModalLongTitle">Edit Event</h2>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -129,22 +138,22 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add'])) {
         <div class="modal-body">
           <form action="events.php" method="POST">
             <div class="form-group">
-            <input type="hidden" name="eventid" id="eventid">
-                <label for="eventtitle">Event Title</label>
-                <input type="text" name="edit_eventtitle" id="edit_eventtitle" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="eventauthor">Event Author</label>
-                <input type="text" name="edit_eventauthor" id="edit_eventauthor" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="launchdate">Launch Date</label>
-                <input type="date" name="edit_launchdate" id="edit_launchdate" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="eventvenue">Event Venue</label>
-                <input type="text" name="edit_eventvenue" id="edit_eventvenue" class="form-control">
-              </div>
+              <input type="hidden" name="eventid" id="eventid">
+              <label for="eventtitle">Event Title</label>
+              <input type="text" name="edit_eventtitle" id="edit_eventtitle" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="eventauthor">Event Author</label>
+              <input type="text" name="edit_eventauthor" id="edit_eventauthor" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="launchdate">Launch Date</label>
+              <input type="date" name="edit_launchdate" id="edit_launchdate" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="eventvenue">Event Venue</label>
+              <input type="text" name="edit_eventvenue" id="edit_eventvenue" class="form-control">
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
@@ -159,7 +168,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add'])) {
     <div class="row">
       <div class="col-4">
         <div class="card">
-          <div class="card-header"><strong>Add Event</strong></div>
+          <div class="card-header">
+            <h2>Add Event</h2>
+          </div>
           <div class="card-body">
             <form action="events.php" method="post" enctype="multipart/form-data">
               <div class="form-group">
@@ -216,7 +227,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add'])) {
                           <td>' . $rows['launchdate'] . '</td>
                           <td>' . $rows['eventvenue'] . '</td>
                           <td> <img width="50px" src="' . $rows['eventimg'] . '"/></td>
-                          <td> <button data-toggle="modal" data-target="#addModal" class="edits btn btn-primary btn-sm" id="' . $rows['eventid'] . '">Edit</button> <button id="d' . $rows['eventid'] . '" class="mt-1 deletes btn btn-danger btn-sm">Delete</button> </td>
+                          <td> <button data-toggle="modal" data-target="#addModal" class="edits btn btn-success btn-sm" id="' . $rows['eventid'] . '">Edit</button> <button id="d' . $rows['eventid'] . '" class="mt-1 deletes btn btn-danger btn-sm">Delete</button> </td>
                           </tr>';
                   }
                 }
@@ -229,12 +240,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add'])) {
     </div>
   </div>
 
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="//cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+
+  <?php include 'partial/_script.php'; ?>
   <script>
     $(document).ready(function() {
       $('#myTable').DataTable();
@@ -252,15 +259,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add'])) {
 
 
     edits = document.getElementsByClassName('edits');
-    Array.from(edits).forEach((element)=>{
-      element.addEventListener('click',(e)=>{
+    Array.from(edits).forEach((element) => {
+      element.addEventListener('click', (e) => {
 
         tr = e.target.parentNode.parentNode;
         title = tr.getElementsByTagName('td')[1].innerText;
         author = tr.getElementsByTagName('td')[2].innerText;
         launchdate = tr.getElementsByTagName('td')[3].innerText;
         venue = tr.getElementsByTagName('td')[4].innerText;
-        
+
         edit_eventtitle.value = title;
         edit_eventauthor.value = author;
         edit_launchdate.value = launchdate;

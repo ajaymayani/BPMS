@@ -2,7 +2,6 @@
 $inserted = false;
 
 if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['id'])) {
-    echo "get";
     $id = $_GET['id'];
     $sql = "select * from booksinfo_tbl where id='$id'";
     $result = $conn->query($sql);
@@ -54,16 +53,8 @@ if($_SERVER['REQUEST_METHOD']=="POST" && isset($_POST['update']))
 <head>
     <meta charset="UTF-8">
     <title>Add Book</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="//cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-
-    <style>
-        body {
-            background-color: #9f9da7;
-        }
-    </style>
+ <?php include 'partial/_link.php';?>
+   
 </head>
 
 <body>
@@ -178,11 +169,7 @@ if($_SERVER['REQUEST_METHOD']=="POST" && isset($_POST['update']))
             </div>
         </div>
     </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <?php include 'partial/_script.php';?>
 </body>
 
 </html>
