@@ -1,7 +1,6 @@
 <?php
 
 include 'partial/_config.php';
-
 $showError = false;
 
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['submit'])) {

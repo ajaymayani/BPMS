@@ -1,7 +1,10 @@
 <?php
 
 include '../partial/_config.php';
-
+session_start();
+if (isset($_SESSION['a_loggedin'])) {
+    header("location:index.php");
+}
 $showError = false;
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $username = $_POST['username'];
