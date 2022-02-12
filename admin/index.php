@@ -103,7 +103,7 @@ if ($_SESSION['a_loggedin'] != true || !isset($_SESSION['a_loggedin'])) {
                                         <i class="fa fa-users fa-2x mr-1"></i>
                                     </div>
                                     <div class="col-auto mt-2">
-                                        <a href="show_all_students.php?course=2" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                        <a href="events.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -124,7 +124,7 @@ if ($_SESSION['a_loggedin'] != true || !isset($_SESSION['a_loggedin'])) {
                                         <i class="fa fa-users fa-2x mr-1"></i>
                                     </div>
                                     <div class="col-auto mt-2">
-                                        <a href="show_all_students.php?course=2" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                        <a href="specimen_request.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -145,7 +145,7 @@ if ($_SESSION['a_loggedin'] != true || !isset($_SESSION['a_loggedin'])) {
                                         <i class="fa fa-users fa-2x mr-1"></i>
                                     </div>
                                     <div class="col-auto mt-2">
-                                        <a href="show_all_students.php?course=2" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                        <a href="author_proposal.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>
                             </div>
